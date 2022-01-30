@@ -1,9 +1,9 @@
-# DEVinMMO
+# Conta365
 
-This project was created to test what was learned during the react classes.
+This project was created to test what was learned during the node and express classes.
 
 ## What was used
 
-React,Formik,Styled-Components,fetch,javascript,html
+Node,express,multer,xlsx-populate,swagger
 
 ### Enjoy and feel free to give advices.
