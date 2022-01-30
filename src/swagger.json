@@ -174,15 +174,11 @@
               "schema": {
                 "type": "object",
                 "properties":{
-                  "name": {
+                  "excel": {
+                    "description":"Header must be | price | typesOfExpenses | date | name",
                     "type": "string",
-                    "example": "excel",
+                    "format":"binary",
                     "required": true
-                  },
-                  "file":{
-                    "description": "Header must the be | price | typesOfExpenses | date | name",
-                    "type":"string",
-                    "format":"base64"
                   }
                 }
               }
