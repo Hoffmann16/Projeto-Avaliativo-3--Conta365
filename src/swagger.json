@@ -175,6 +175,7 @@
                 "type": "object",
                 "properties":{
                   "file":{
+                    "description": "Header must the be | price | typesOfExpenses | date | name",
                     "type":"string",
                     "format":"base64"
                   }
