@@ -1,0 +1,65 @@
+[
+  {
+    "id": 1,
+    "userId": 1,
+    "financialData": [
+      {
+        "id": 1,
+        "price": 1,
+        "typeOfExpenses": "lazer",
+        "date": "23/11/2021",
+        "name": "passeio"
+      }
+    ],
+    "count": 1
+  },
+  {
+    "id": 2,
+    "userId": 2,
+    "financialData": [
+      {
+        "id": 1,
+        "price": 1,
+        "typeOfExpenses": "alimentação",
+        "date": "23/11/2022",
+        "name": "lanche da tarde"
+      }
+    ],
+    "count": 1
+  },
+  {
+    "id": 3,
+    "userId": 3,
+    "financialData": [
+      {
+        "id": 1,
+        "price": 1,
+        "typeOfExpenses": "alimentação",
+        "date": "23/11/2022",
+        "name": "lanche da tarde"
+      },
+      {
+        "id": 2,
+        "price": 1,
+        "typeOfExpenses": "alimentação",
+        "date": "23/11/2022",
+        "name": "lanche da tarde"
+      },
+      {
+        "id": 3,
+        "price": 1,
+        "typeOfExpenses": "alimentação",
+        "date": "23/11/2022",
+        "name": "lanche da tarde"
+      },
+      {
+        "id": 4,
+        "price": 1,
+        "typeOfExpenses": "alimentação",
+        "date": "23/11/2022",
+        "name": "lanche da tarde"
+      }
+    ],
+    "count": 4
+  }
+]

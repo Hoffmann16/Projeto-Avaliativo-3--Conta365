@@ -1,0 +1,271 @@
+{
+  "openapi": "3.0.1",
+  "info": {
+    "title": "Swagger para Conta365",
+    "description": "This swagger documentation has the intention to provide a place where the front-end users can test the interaction with the API. All this was built to test the knowledge earned during the first part of Modulo 2 - BackEnd of DevInHouse "
+  },
+  "version": "1.0.0",
+  "externalDocs": {
+    "description": "Find out more about me in DevInHouse",
+    "url": "https://github.com/Hoffmann16"
+  },
+  "servers": [
+    {
+      "url": "http://localhost:3333/conta365"
+    }
+  ],
+  "tags": [
+    {
+      "name": "Users",
+      "description": "All entry points to users request methods"
+    },
+    {
+      "name": "Financial",
+      "description": "All entry points to financial request methods"
+    }
+  ],
+  "paths": {
+    "/user/{id}": {
+      "get": {
+        "tags": ["Users"],
+        "summary": "Return info of a user in the database",
+        "operationId": "findUser",
+        "parameters": [
+          {
+            "name": "id",
+            "in": "path",
+            "description": "Id of user",
+            "required": true,
+            "schema": {
+              "type": "number"
+            }
+          }
+        ],
+        "responses": {
+          "200": {
+            "description": "A user's name and email are returned"
+          },
+          "400": {
+            "description": "User Id not found"
+          }
+        }
+      },
+      "patch": {
+        "tags": ["Users"],
+        "summary": "Change info in a users present in the database",
+        "operationId": "changeUser",
+        "parameters": [
+          {
+            "name": "id",
+            "in": "path",
+            "description": "Id of user",
+            "required": true,
+            "schema": {
+              "type": "number"
+            }
+          }
+        ],
+        "requestBody": {
+          "content": {
+            "application/json": {
+              "schema": {
+                "type": "object",
+                "properties": {
+                  "name": {
+                    "type": "string",
+                    "example": "Ze"
+                  },
+                  "email": {
+                    "type": "string",
+                    "example": "ze@gmail.com"
+                  }
+                }
+              }
+            }
+          }
+        },
+
+        "responses": {
+          "200": {
+            "description": "A user's name and/or email has been changed"
+          },
+          "400": {
+            "description": "Id is invalid"
+          },
+          "401": {
+            "description": "Body has no key to change"
+          },
+          "402": {
+            "description": "Name is invalid"
+          },
+          "403": {
+            "description": "Email is invalid"
+          }
+        }
+      }
+    },
+    "/users": {
+      "post": {
+        "tags": ["Users"],
+        "summary": "Add a new user to the database",
+        "operationId": "addUser",
+        "requestBody": {
+          "content": {
+            "application/json": {
+              "schema": {
+                "type": "object",
+                "properties": {
+                  "name": {
+                    "type": "string",
+                    "example": "Tateu",
+                    "required": true
+                  },
+                  "email": {
+                    "type": "string",
+                    "example": "tateu@hotmail.com",
+                    "required": true
+                  }
+                }
+              }
+            }
+          }
+        },
+        "responses": {
+          "200": {
+            "description": "User added with success"
+          },
+          "400": {
+            "description": "Name is invalid"
+          },
+          "401": {
+            "description": "Email is invalid"
+          }
+        }
+      }
+    },
+    "/finance/{userId}/{nrows}": {
+      "post": {
+        "tags": ["Financial"],
+        "summary": "Add transaction to financial database",
+        "operationId": "handleExcel",
+        "parameters": [
+          {
+            "name": "userId",
+            "in": "path",
+            "description": "Id of user",
+            "required": true,
+            "schema": {
+              "type": "number"
+            }
+          },
+          {
+            "name": "nrows",
+            "in": "path",
+            "description": "Number of rows to be added",
+            "required": true,
+            "schema": {
+              "type": "number"
+            }
+          }
+        ],
+        "requestBody": {
+          "content": {
+            "multipart/form-data": {
+              "schema": {
+                "type": "object",
+                "properties":{
+                  "file":{
+                    "type":"string",
+                    "format":"base64"
+                  }
+                }
+              }
+            }
+          }
+        },
+        "responses": {
+          "200": {
+            "description": "Financial data added with success"
+          },
+          "400": {
+            "description": "userId or nrows is invalid"
+          },
+          "401": {
+            "description": "User not found"
+          },
+          "402": {
+            "description": "Sheet is not in the correct format"
+          },
+          "403": {
+            "description": "Item in a column is incorrect"
+          }
+        }
+      }
+    },
+    "/finance/{userId}/{financialDataId}": {
+      "delete": {
+        "tags": ["Financial"],
+        "summary": "Remove a transaction from the financial database",
+        "operationId": "removeFinancialData",
+        "parameters": [
+          {
+            "name": "userId",
+            "in": "path",
+            "description": "Id of user",
+            "required": true,
+            "schema": {
+              "type": "number"
+            }
+          },
+          {
+            "name": "financialDataId",
+            "in": "path",
+            "description": "Id of the transaction",
+            "required": true,
+            "schema": {
+              "type": "number"
+            }
+          }
+        ],
+        "responses": {
+          "200": {
+            "description": "Transaction removed"
+          },
+          "400": {
+            "description": "userId or financialDataId is invalid"
+          },
+          "401": {
+            "description": "userId not found"
+          }
+        }
+      }
+    },
+    "/finance/{userId}": {
+      "get": {
+        "tags": ["Financial"],
+        "summary": "Return the sum of expenses by user, can be applied a filter in typeOfExpenses",
+        "operationId": "sumExpenses",
+        "parameters": [
+          {
+            "name": "userId",
+            "in": "path",
+            "description": "Id of user",
+            "required": true,
+            "schema": {
+              "type": "number"
+            }
+          },
+          {
+            "name": "typeOfExpenses",
+            "in": "query",
+            "description": "Opcional filter",
+            "schema": {
+              "type": "string"
+            }
+          }
+        ],
+        "responses": {}
+      }
+    }
+  }
+}
