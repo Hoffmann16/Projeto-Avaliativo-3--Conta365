@@ -3,8 +3,6 @@ const { getData, addData } = require("../utils/functions");
 
 const handleExcel = async (req, res) => {
   const { userId, nrows } = req.params;
-  console.log(req)
-  console.log(req.file)
 
   //conferindo se inputs são numeros
   if (isNaN(userId) || isNaN(nrows)) {
