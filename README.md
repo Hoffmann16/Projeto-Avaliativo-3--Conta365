@@ -8,6 +8,7 @@ Node,express,multer,xlsx-populate,swagger
 
 ## Where to test
 
-The requests can be tested at http://localhost:3333/conta365-docs/ after run the program
+The requests can be tested at http://localhost:3333/conta365-docs/ after run the program.
+the upload of excel through swagger is not functioning correctly, test using insomnia, file name ust be excel
 
 ### Enjoy and feel free to give advices.
